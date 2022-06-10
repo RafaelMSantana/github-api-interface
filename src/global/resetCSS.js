@@ -39,6 +39,7 @@ html {
 body {
   margin: 0;
   font-family: roboto,sans-serif;
+  background: #f5f5dc
 }
 
 /**

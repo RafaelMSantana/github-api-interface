@@ -12,7 +12,7 @@ export const WrapperInfoUser = styled.div`
   justify-content: space-between;
   margin-left: 8px;
   height: 200px;
-
+  Wrap
   h1 {
     font-size: 32px;
     font-weight: bold;

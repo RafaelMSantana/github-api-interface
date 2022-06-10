@@ -4,13 +4,13 @@ import RepositoryItem from "../repository-item";
 import * as S from "./styled";
 
 const Repositories = () => {
-  const { githubState, getUserRepos, getUserStarred } = useGithub();
+  const { githubState, getUserRepos, getUserStars } = useGithub();
   const [hasUserForSearchrepos, setHasUserForSearchrepos] = useState(false);
 
   useEffect(() => {
     if (githubState.user.login) {
       getUserRepos(githubState.user.login);
-      getUserStarred(githubState.user.login);
+      getUserStars(githubState.user.login);
     }
     setHasUserForSearchrepos(githubState.repositories);
 
@@ -26,7 +26,7 @@ const Repositories = () => {
         >
           <S.WrapperTabList>
             <S.WrapperTab>Repositories</S.WrapperTab>
-            <S.WrapperTab>Starred</S.WrapperTab>
+            <S.WrapperTab>Stars</S.WrapperTab>
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
@@ -42,7 +42,7 @@ const Repositories = () => {
           </S.WrapperTabPanel>
           <S.WrapperTabPanel>
             <S.WrapperList>
-              {githubState.starred.map((item) => (
+              {githubState.stars.map((item) => (
                 <RepositoryItem
                   key={item.id}
                   name={item.name}

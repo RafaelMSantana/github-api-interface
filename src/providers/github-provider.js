@@ -5,7 +5,7 @@ export const GithubContext = createContext({
   loading: false,
   user: {},
   repositories: [],
-  starred: [],
+  stars: [],
 });
 
 const GithubProvider = ({ children }) => {
@@ -27,7 +27,7 @@ const GithubProvider = ({ children }) => {
       public_repos: 0,
     },
     repositories: [],
-    starred: [],
+    stars: [],
   });
 
   const getUser = (username) => {
@@ -76,12 +76,12 @@ const GithubProvider = ({ children }) => {
     });
   };
 
-  const getUserStarred = (username) => {
-    api.get(`users/${username}/starred`).then(({ data }) => {
+  const getUserStars = (username) => {
+    api.get(`users/${username}/stars`).then(({ data }) => {
       console.log("data: " + JSON.stringify(data));
       setGithubState((prevState) => ({
         ...prevState,
-        starred: data,
+        stars: data,
       }));
     });
   };
@@ -90,7 +90,7 @@ const GithubProvider = ({ children }) => {
     githubState,
     getUser: useCallback((username) => getUser(username), []),
     getUserRepos: useCallback((username) => getUserRepos(username), []),
-    getUserStarred: useCallback((username) => getUserStarred(username), []),
+    getUserStars: useCallback((username) => getUserStars(username), []),
   };
 
   return (
